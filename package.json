@@ -1,0 +1,29 @@
+{
+  "name": "giveradar-mcp",
+  "version": "1.1.0",
+  "description": "MCP stdio bridge for GiveRadar: search, verify, and compare 7 million+ charities from official government registries across 65+ countries.",
+  "type": "commonjs",
+  "main": "index.js",
+  "bin": {
+    "giveradar-mcp": "index.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "charity",
+    "nonprofit",
+    "giveradar"
+  ],
+  "homepage": "https://giveradar.com/charity-mcp-server/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/matt-timmermans/giveradar-mcp.git"
+  },
+  "license": "MIT"
+}

@@ -1,9 +1,9 @@
 # GiveRadar MCP Server
 
-Remote [MCP](https://modelcontextprotocol.io) server exposing **8.7M+ registered charities across 60+ countries**, sourced from official government registries (IRS, Charity Commission, ACNC, DSD, RNA, and 60+ more). Read-only, no key required to start.
+Remote [MCP](https://modelcontextprotocol.io) server exposing **7 million+ registered charities across 65+ countries**, sourced from official government registries (IRS, Charity Commission, ACNC, and dozens more). Read-only, no key required to start.
 
 **Endpoint:** `https://giveradar.com/mcp/` (JSON-RPC 2.0 over HTTPS)
-**Registry:** [`com.giveradar/charity-registry`](https://registry.modelcontextprotocol.io/v0.1/servers?search=com.giveradar) | **Docs:** [giveradar.com/mcp](https://giveradar.com/mcp/) | **Manifest:** [/.well-known/mcp.json](https://giveradar.com/.well-known/mcp.json)
+**Docs:** [giveradar.com/mcp](https://giveradar.com/mcp/) | **Manifest:** [/.well-known/mcp.json](https://giveradar.com/.well-known/mcp.json)
 
 ## Tools
 
@@ -16,22 +16,24 @@ Remote [MCP](https://modelcontextprotocol.io) server exposing **8.7M+ registered
 
 Plus `resources/list` / `resources/read` for full schema.org JSON-LD per charity (incl. FAQs). All tools are read-only (`readOnlyHint: true`).
 
-## Claude Desktop
+## Connect
 
-Add to `claude_desktop_config.json`:
+This repo includes a tiny zero-dependency **stdio bridge** (`index.js`) that forwards the MCP stdio transport to the hosted endpoint, so any stdio MCP client can use it. Add to Claude Desktop's `claude_desktop_config.json`:
 
 ```json
 {
   "mcpServers": {
     "giveradar": {
       "command": "npx",
-      "args": ["-y", "mcp-remote", "https://giveradar.com/mcp/"]
+      "args": ["-y", "github:matt-timmermans/giveradar-mcp"]
     }
   }
 }
 ```
 
-Clients with native streamable-HTTP support can connect directly to `https://giveradar.com/mcp/`.
+Clients with native streamable-HTTP support can connect directly to `https://giveradar.com/mcp/`. You can also use the generic remote bridge `npx -y mcp-remote https://giveradar.com/mcp/`.
+
+Optional: set `GIVERADAR_API_KEY=gr_xxxxx` in the environment to raise the daily quota and unlock Pro fields.
 
 ## Try it
 
@@ -53,4 +55,4 @@ Authenticate with `Authorization: Bearer gr_xxxxx` - get a key at [giveradar.com
 
 ## About
 
-This repo holds the public metadata for the hosted server (the implementation lives in the main GiveRadar codebase). Data license: **CC-BY-4.0** - attribute "GiveRadar (giveradar.com)". Issues and feature requests welcome here.
+The MCP server is hosted (the implementation lives in the main GiveRadar codebase); this repo holds the public metadata plus the stdio bridge for local and sandbox use. Data license: **CC-BY-4.0** - attribute "GiveRadar (giveradar.com)". Issues and feature requests welcome here.
