@@ -1,12 +1,12 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "com.giveradar/charity-registry",
-  "description": "Search, verify, and compare 7 million+ charities from official government registries across 65+ countries.",
+  "description": "Search, verify, and compare 7.9 million+ nonprofits from official government charity registries across 100+ countries.",
   "repository": {
     "url": "https://github.com/matt-timmermans/giveradar-mcp",
     "source": "github"
   },
-  "version": "1.1.0",
+  "version": "1.2.0",
   "websiteUrl": "https://giveradar.com/mcp/",
   "remotes": [
     {
